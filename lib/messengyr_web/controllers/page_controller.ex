@@ -53,5 +53,9 @@ defmodule Messengyr.Web.PageController do
         |> render("login.html")
     end
   end
+<<<<<<< HEAD:lib/messengyr_web/controllers/page_controller.ex
 
+=======
+  
+>>>>>>> 981ad2a... Authentication:lib/messengyr/web/controllers/page_controller.ex
 end
