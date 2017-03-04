@@ -1,7 +1,7 @@
 # lib/messengyr/web/controller/page_controller.ex
 
-defmodule Messengyr.Web.PageController do
-  use Messengyr.Web, :controller
+defmodule MessengyrWeb.PageController do
+  use MessengyrWeb, :controller
 
   alias Messengyr.Accounts
   alias Messengyr.Accounts.Session
@@ -53,9 +53,4 @@ defmodule Messengyr.Web.PageController do
         |> render("login.html")
     end
   end
-<<<<<<< HEAD:lib/messengyr_web/controllers/page_controller.ex
-
-=======
-  
->>>>>>> 981ad2a... Authentication:lib/messengyr/web/controllers/page_controller.ex
 end

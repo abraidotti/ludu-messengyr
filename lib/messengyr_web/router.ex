@@ -1,7 +1,7 @@
 # lib/messengyr/web/router.ex
 
-defmodule Messengyr.Web.Router do
-  use Messengyr.Web, :router
+defmodule MessengyrWeb.Router do
+  use MessengyrWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -20,7 +20,7 @@ defmodule Messengyr.Web.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", Messengyr.Web do
+  scope "/", MessengyrWeb do
     pipe_through [:browser, :browser_session]
 
     get "/", PageController, :index
