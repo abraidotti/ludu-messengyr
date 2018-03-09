@@ -44,6 +44,9 @@ exports.config = {
 
   // Configure your plugins
   plugins: {
+    sass: {
+    mode: "native" // This is the important part!
+    },
     babel: {
       // Do not use ES6 compiler in vendor code
       ignore: [/vendor/]
