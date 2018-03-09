@@ -13,7 +13,6 @@
 
   <body class=<%= @conn.path_info %>>
     <div class="container">
-      <h1>Messengyr</h1>
 
       <header>
         <%= link "", class: "logo", to: page_path(@conn, :index) %>

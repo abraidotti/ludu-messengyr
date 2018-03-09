@@ -28,7 +28,7 @@
       <input type="text" placeholder="Username">
       <input type="password" placeholder="Password">
 
-      <button type="submit" class="signup"></button>
+      <button type="submit" class="signup">Sign up</button>
     </form>
   </div>
 </div>
