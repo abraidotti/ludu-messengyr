@@ -28,7 +28,7 @@ config :guardian, Guardian,
   ttl: {30, :days},
   allowed_drift: 2000,
   secret_key: "5ecret_k3y",
-  serializer: Messengyr.Accounts.GuardianSerializer
+  serializer: Messengyr.GuardianSerializer
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

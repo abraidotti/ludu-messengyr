@@ -6,11 +6,11 @@ defmodule Messengyr.Accounts do
 
   # Pattern match to create the password
   def create_user(%{"password" => password} = params) do
-
     # Encrypt password with Comeonin
     encrypted_password = Comeonin.Bcrypt.hashpwsalt(password)
 
     register_changeset(params)
+    |> put_change(:encrypted_password, encrypted_password)
     |> Repo.insert
   end
 

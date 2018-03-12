@@ -1,20 +1,24 @@
-defmodule MessengyrWeb.PageController do
-  use MessengyrWeb, :controller
+defmodule Messengyr.Web.PageController do
+  use Messengyr.Web, :controller
+
   alias Messengyr.Accounts
   alias Messengyr.Accounts.Session
 
   def index(conn, _params) do
+    # Add these 2 lines:
+    user = Guardian.Plug.current_resource(conn)
+    IO.inspect user
+
     render conn
   end
 
   def login(conn, _params) do
-    conn
-    |> put_flash(:error, "Unable to log in!")
-    |> render("login.html")
+    render conn
   end
 
   def signup(conn, _params) do
     changeset = Accounts.register_changeset()
+
     render conn, user_changeset: changeset
   end
 
@@ -25,8 +29,10 @@ defmodule MessengyrWeb.PageController do
         |> put_flash(:info, "User created successfully!")
         |> redirect(to: "/")
       {:error, user_changeset} ->
+        IO.inspect user_changeset
+
         conn
-        |> put_flash(:error, "Unable to create account.")
+        |> put_flash(:error, "Unable to create account!")
         |> render("signup.html", user_changeset: user_changeset)
     end
   end
@@ -35,9 +41,10 @@ defmodule MessengyrWeb.PageController do
     case Session.authenticate(credentials) do
       {:ok, %{username: username} = user} ->
         conn
-        |> Guardian.Plug.sign_in(user)
-        |> put_flash(:info, "Logged in as %{username}.")
+        |> Guardian.Plug.sign_in(user) # Add this line!
+        |> put_flash(:info, "Logged in as #{username}!")
         |> render("login.html")
+
       {:error, message} ->
         conn
         |> put_flash(:error, message)
