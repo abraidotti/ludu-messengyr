@@ -1,13 +1,16 @@
 defmodule MessengyrWeb.PageController do
   use MessengyrWeb, :controller
   alias Messengyr.Accounts
+  alias Messengyr.Accounts.Session
 
   def index(conn, _params) do
     render conn
   end
 
   def login(conn, _params) do
-    render conn
+    conn
+    |> put_flash(:error, "Unable to log in!")
+    |> render("login.html")
   end
 
   def signup(conn, _params) do
@@ -25,6 +28,20 @@ defmodule MessengyrWeb.PageController do
         conn
         |> put_flash(:error, "Unable to create account.")
         |> render("signup.html", user_changeset: user_changeset)
+    end
+  end
+
+  def login_user(conn, %{"credentials" => credentials}) do
+    case Session.authenticate(credentials) do
+      {:ok, %{username: username} = user} ->
+        conn
+        |> Guardian.Plug.sign_in(user)
+        |> put_flash(:info, "Logged in as %{username}.")
+        |> render("login.html")
+      {:error, message} ->
+        conn
+        |> put_flash(:error, message)
+        |> render("login.html")
     end
   end
 
