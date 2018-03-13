@@ -5,10 +5,19 @@ import ChatMessage from './chat-message';
 
 class ChatContainer extends React.Component{
   render(){
+    let messages = this.props.messages.map((message) => {
+      return(
+        <ChatMessage
+          key={message.id}
+          message={message}
+        />
+      )
+    })
+
     return(
       <div className="chat">
         <ul>
-          <ChatMessage />
+          {messages}
         </ul>
 
         <div className="compose-box">

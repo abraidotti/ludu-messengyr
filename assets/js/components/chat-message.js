@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 
 class ChatMessage extends React.Component{
   render(){
+    let message = this.props.message;
+    let messageClass = (message.outgoing) ? 'user' : 'counterpart';
+
     return(
-      <li className="user">
+      <li className={messageClass}>
         <p>
-          Here's a message!
+          {message.text}
         </p>
       </li>
     )

@@ -5,6 +5,16 @@ import MenuMessage from './menu-message';
 
 class MenuContainer extends React.Component{
   render(){
+
+    let rooms = this.props.rooms.map((room) => {
+      return(
+        <MenuMessage
+          key={room.id}
+          room={room}
+        />
+      );
+    });
+
     return(
       <div className="menu">
         <div className="header">
@@ -13,7 +23,7 @@ class MenuContainer extends React.Component{
         </div>
 
         <ul>
-          <MenuMessage />
+          {rooms}
         </ul>
 
       </div>
