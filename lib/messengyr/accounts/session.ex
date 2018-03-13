@@ -1,3 +1,5 @@
+# lib/messengyr/accounts/session.ex
+
 defmodule Messengyr.Accounts.Session do
 
   alias Messengyr.Accounts.User

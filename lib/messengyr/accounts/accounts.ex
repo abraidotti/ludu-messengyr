@@ -1,12 +1,13 @@
+# lib/messengyr/accounts/accounts.ex
+
 defmodule Messengyr.Accounts do
 
   import Ecto.Changeset
+
   alias Messengyr.Accounts.User
   alias Messengyr.Repo
 
-  # Pattern match to create the password
   def create_user(%{"password" => password} = params) do
-    # Encrypt password with Comeonin
     encrypted_password = Comeonin.Bcrypt.hashpwsalt(password)
 
     register_changeset(params)

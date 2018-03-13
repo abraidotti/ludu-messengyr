@@ -1,4 +1,6 @@
-defmodule Messengyr.Accounts.GuardianSerializer do
+# lib/messengyr/accounts/guardian_serializer.ex
+
+defmodule Messengyr.GuardianSerializer do
   @behaviour Guardian.Serializer
 
   alias Messengyr.Repo
