@@ -3,6 +3,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import ChatContainer from "./components/chat-container.js";
+import MenuContainer from "./componennts/menu-container.js";
+
 class App extends React.Component {
   render() {
     return (
