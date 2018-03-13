@@ -1,17 +1,16 @@
 <div class="tagline">
   <h1>Welcome to Messengyr!</h1>
-  <h2>A Messenger clone built with Elixir + Phoenix</h2>
+  <h2>A Messenger clone built in Elixir + Phoenix</h2>
 </div>
 
 <div class="action-boxes">
 
   <div class="card login">
-    <form>
-      <input type="text" placeholder="Username">
-      <input type="password" placeholder="Password">
-
-      <button type="submit" class="login">Log in</button>
-    </form>
+    <%= form_for @conn, page_path(@conn, :login_user), [as: :credentials], fn f -> %>
+      <%= text_input f, :username, placeholder: "Username" %>
+      <%= text_input f, :password, placeholder: "Password", type: "password" %>
+      <%= submit "Log in", class: "login" %>
+    <% end %>
   </div>
 
   <div class="card signup">
@@ -22,13 +21,11 @@
 
       Sign up!
     </h5>
-
-    <form>
-      <input type="text" placeholder="Email">
-      <input type="text" placeholder="Username">
-      <input type="password" placeholder="Password">
-
-      <button type="submit" class="signup">Sign up</button>
-    </form>
+    <%= form_for @user_changeset, page_path(@conn, :create_user), fn f -> %>
+      <%= text_input f, :email, placeholder: "Email" %>
+      <%= text_input f, :username, placeholder: "Username" %>
+      <%= text_input f, :password, placeholder: "Password", type: "password" %>
+      <%= submit "Sign Up", class: "signup" %>
+    <% end %>
   </div>
 </div>
