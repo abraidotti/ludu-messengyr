@@ -24,9 +24,11 @@ defmodule MessengyrWeb.Router do
     pipe_through [:browser, :browser_session]
 
     get "/", PageController, :index
+    get "/messages", ChatController, :index
 
     get "/signup", PageController, :signup
     get "/login", PageController, :login
+    get "/logout", PageController, :logout
 
     post "/signup", PageController, :create_user
     post "/login", PageController, :login_user
